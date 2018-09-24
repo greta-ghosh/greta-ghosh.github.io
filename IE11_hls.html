@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<script src="//content.jwplatform.com/libraries/Nm5ks39j.js"></script>
+<style>
+    .jw-dock-image {
+        background-size: 45%;
+        opacity: 1;
+    }
+    .jw-logo {
+        opacity: 1.0;
+    }
+    .jwplayer .jw-controlbar {
+        display: over !important;
+        opacity: 1 !important;
+    }
+    .jw-title-primary {
+        display: none !important;
+    }
+    .jw-preview {
+        display: none !important;
+    }
+</style>
+<div id="embedded_player_fcc884fe39614">Loading the player...</div>
+<script type="text/javascript">
+    var playedOnce = false;
+    var totalTime = 0;
+    var currentTime = 0;
+    var posterUrl = "";
+    window.ga_debug = {trace: false};
+    jwplayer("embedded_player_fcc884fe39614").setup({
+        //start content related
+        file: "https://api-staging.twistage.com/videos/fcc884fe39614/playlist.m3u8?user_agent=Windows_MSIE&player_profile=jw7-streaming_on&hash=zdc7-OVaD9g2dKngX0LR2g&expiry=1501680737",
+        playlist: "",
+        image: "https://api-staging.twistage.com:443/videos/fcc884fe39614/screenshots/600w400h.jpg",
+        title: "726209140859890",
+        primary: "Flash",
+        abouttext: "",
+        aboutlink: "${player_aboutlink}",
+        logo: {"file":"https://api-staging.twistage.com/images/i761b85831506.jpg","link":"http://www.google.co.in","hide":false,"position":"top-right"},
+        skin: {"name":"undefined","active":"#","inactive":"#","background":"#"},
+        tracks: [{"file":"https://service-staging.twistage.com/videos/fcc884fe39614/subtitles/en/file.vtt","label":"en","kind":"captions","default":true}],
+        //start player related
+        autostart: "false",
+        width: "600",
+        height: "400",
+        aspectratio: "${player_aspectratio}",
+        controls: "${player_controls}",
+        plugins: {},
+        events: {
+            onReady: function() {
+                var videoTag = jwplayer("embedded_player_fcc884fe39614").getContainer().getElementsByTagName("video")[0];
+                if(posterUrl)
+                    videoTag.setAttribute("poster", posterUrl);
+                if(typeof playerReady === "function") {
+                    var obj = {id: "embedded_player_fcc884fe39614", version: jwplayer().version, type: "jwplayerReady"};
+                    eval(playerReady).apply(this, [obj]);
+                }
+
+                var hit_url="https://stats-dev-ue1.twistage.com:443/collector/hit?asset_id=649177&id=fcc884fe39614&embed_location=http://console-staging.twistage.com/sandbox&player_profile=jw7-streaming_on";
+                for (var key in additionalFlashvars) {
+                    if (key.indexOf('reporting_fields[') == 0) {
+                        hit_url += "&" + escape(key) + "=" + escape(additionalFlashvars[key]);
+                    }
+                }
+                var hit_script=document.createElement("script");
+                hit_script.setAttribute("type","text/javascript");
+                hit_script.setAttribute("src", hit_url);
+                document.getElementsByTagName("head")[0].appendChild(hit_script);
+
+            },
+            onPlay: function() {
+                var videoTag = jwplayer("embedded_player_fcc884fe39614").getContainer().getElementsByTagName("video")[0];
+                if(posterUrl)
+                    videoTag.removeAttribute("poster");
+
+                if (!playedOnce) {
+                    playedOnce = true;
+
+                    if ("" === "true") {
+                        authenticationCheck();
+                    }
+                }
+            },
+            onPause: function() {
+
+            },
+            onTime: function(e) {
+                totalTime = e.duration;
+                currentTime = e.position;
+
+            },
+            onComplete: function() {
+                if(true || false){
+                    duration = jwplayer("embedded_player_fcc884fe39614").getDuration();
+                    position = jwplayer("embedded_player_fcc884fe39614").getPosition();
+                }
+                if(false){
+                    duration = flowplayer("embedded_player_fcc884fe39614").getClip().fullDuration;
+                    position = flowplayer("embedded_player_fcc884fe39614").getTime();
+                }
+                if (duration > 0 & position >0) {
+                    percentage = (position/duration * 100).toFixed(0);
+                    if(true || false){
+                        playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=" + percentage + ",0" ;
+                    }
+                    if(false){
+                        media_id = jwplayer("embedded_player_fcc884fe39614").getPlaylistItem().mediaid;
+                        playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=&" + media_id + "=" + percentage + ",0" + "&id=" + media_id;
+                    }
+                    for (var key in additionalFlashvars){
+                        if (key.indexOf('reporting_fields[') == 0) {
+                            playhead_url += "&" + escape(key) + "=" + escape(additionalFlashvars[key]);
+                        }
+                    }
+                    var xmlhttp;
+                    if (window.XMLHttpRequest) {
+                        xmlhttp=new XMLHttpRequest();
+                    } else{
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.open("GET", playhead_url, true);
+                    xmlhttp.send();
+                }
+
+
+            },
+            onBeforeComplete: function() {
+                if (!true) {
+                    jwplayer("embedded_player_fcc884fe39614").stop();
+                }
+            }
+        }
+    });
+
+    window.onbeforeunload = function() {
+        if(true || false){
+            duration = jwplayer("embedded_player_fcc884fe39614").getDuration();
+            position = jwplayer("embedded_player_fcc884fe39614").getPosition();
+        }
+        if(false){
+            duration = flowplayer("embedded_player_fcc884fe39614").getClip().fullDuration;
+            position = flowplayer("embedded_player_fcc884fe39614").getTime();
+        }
+        if (duration > 0 & position >0) {
+            percentage = (position/duration * 100).toFixed(0);
+            if(true || false){
+                playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=" + percentage + ",0" ;
+            }
+            if(false){
+                media_id = jwplayer("embedded_player_fcc884fe39614").getPlaylistItem().mediaid;
+                playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=&" + media_id + "=" + percentage + ",0" + "&id=" + media_id;
+            }
+            for (var key in additionalFlashvars){
+                if (key.indexOf('reporting_fields[') == 0) {
+                    playhead_url += "&" + escape(key) + "=" + escape(additionalFlashvars[key]);
+                }
+            }
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp=new XMLHttpRequest();
+            } else{
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("GET", playhead_url, true);
+            xmlhttp.send();
+        }
+
+
+    };
+
+
+    window.onpagehide = function(){
+        if ("#{options[:user_agent]}".includes("iphone") || "#{options[:user_agent]}".includes("ipad") || "#{options[:user_agent]}".includes("ipod")){
+            if(true || false){
+                duration = jwplayer("embedded_player_fcc884fe39614").getDuration();
+                position = jwplayer("embedded_player_fcc884fe39614").getPosition();
+            }
+            if(false){
+                duration = flowplayer("embedded_player_fcc884fe39614").getClip().fullDuration;
+                position = flowplayer("embedded_player_fcc884fe39614").getTime();
+            }
+            if (duration > 0 & position >0) {
+                percentage = (position/duration * 100).toFixed(0);
+                if(true || false){
+                    playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=" + percentage + ",0" ;
+                }
+                if(false){
+                    media_id = jwplayer("embedded_player_fcc884fe39614").getPlaylistItem().mediaid;
+                    playhead_url = "https://stats-dev-ue1.twistage.com:443/collector/playhead?player_profile=jw7-streaming_on&id=fcc884fe39614&fcc884fe39614=&" + media_id + "=" + percentage + ",0" + "&id=" + media_id;
+                }
+                for (var key in additionalFlashvars){
+                    if (key.indexOf('reporting_fields[') == 0) {
+                        playhead_url += "&" + escape(key) + "=" + escape(additionalFlashvars[key]);
+                    }
+                }
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    xmlhttp=new XMLHttpRequest();
+                } else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.open("GET", playhead_url, true);
+                xmlhttp.send();
+            }
+
+        }
+    };
+
+    function authenticationCheck(){
+        jwplayer("embedded_player_fcc884fe39614").pause();
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp=new XMLHttpRequest();
+        } else{
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+                if (xmlhttp.status == 200) {
+                    var resp = JSON.parse(xmlhttp.responseText);
+                    if (!resp.valid) {
+                        jwplayer("embedded_player_fcc884fe39614").load({image: "http://nonexistent.url"});
+                    } else {
+                        jwplayer("embedded_player_fcc884fe39614").play();
+                    }
+                } else if (xmlhttp.status >= 400 ){
+                    jwplayer("embedded_player_fcc884fe39614").load({image: "http://nonexistent.url"});
+                }
+            }
+        };
+
+        xmlhttp.open("GET", "${player_authcallback_url}", true);
+        xmlhttp.send();
+    }
+    function getTimePlayed() {
+        if ((typeof(currentTime) == "undefined") || (currentTime < 0)) return 0;
+        return currentTime.toFixed(0);
+    }
+</script>
+</html>
+
